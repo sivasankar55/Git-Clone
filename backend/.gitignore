@@ -2,7 +2,3 @@
 node_modules/
 
 .env
-
-commit.json
-hello.txt
-.apnaGit
