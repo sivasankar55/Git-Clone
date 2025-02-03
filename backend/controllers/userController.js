@@ -48,7 +48,7 @@ async function connectClient() {
 
     const token = jwt.sign({id:result.insertId},process.env.JWT_SECRET_KEY, {expiresIn:"1h"});
 
-    res.json({token});
+    res.json({token, userId:result.insertId});
   }catch(err){
     console.log("Error during signup :", err.message);
     res.status(500).send("Server error");
