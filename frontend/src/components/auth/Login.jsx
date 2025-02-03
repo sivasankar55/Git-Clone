@@ -11,23 +11,23 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
 
-       useEffect(() => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("userId");
-        setCurrentUser(null);
-       });
+      //  useEffect(() => {
+      //   localStorage.removeItem("token");
+      //   localStorage.removeItem("userId");
+      //   setCurrentUser(null);
+      //  });
 
        const [email, setEmail] = useState("");
        const [password, setPassword] = useState("");
        const [loading, setLoading] = useState(false);
-       const {currentUser, setCurrentUser} = useAuth();
+       const { setCurrentUser} = useAuth();
 
        const handleLogin = async (e) => {
          e.preventDefault();
 
          try {
            setLoading(true);
-           const res = await axios.post("http://localhost:3000/login",{
+           const res = await axios.post("http://localhost:3002/login",{
             email:email,
             password:password
            });
@@ -93,9 +93,10 @@ const Login = () => {
           <Button
             variant="primary"
             className="login-btn"
+            disabled={loading}
            onClick={handleLogin}
           >
-            login
+            {loading ? "Loading..." : "Login"}
           </Button>
         </div>
         <div className="pass-box">
